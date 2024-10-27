@@ -20,6 +20,9 @@ def gradient_descent(f, x, step, theta, iterations):
         x = vanilla_math.add(x, dx)
     return x
 
+
+
+
 # y is a row vector. Each column contains the expected result for the corresponding column of x (TODO: Generalize to a matrix, consisting of result columns (output layer of NN can be vector))
 # x is the input matrix, where each column represents one set of inputs
 def cost_avg_of_total_input(x, y):

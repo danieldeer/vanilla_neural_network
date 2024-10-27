@@ -1,4 +1,4 @@
-
+import random
 
 A = [[1,2,3],[4,-5,6]]
 B = [[-1,0,1],[0,1,2],[-1,1,0]]
@@ -49,6 +49,9 @@ def add(A, B):
             result[i][j] = A[i][j] + B[i][j]
     return result
 
+def negate(A):
+    return [[-A[i][j] for j in range(len(A[0]))] for i in range(len(A))]
+
 # v,w must be column vectors
 def dot_product(v,w):
     return sum([v[i][0]*w[i][0] for i in range(len(v))])
@@ -71,6 +74,21 @@ def unit_matrix(size):
 def apply_function_element_wise(f,v):
     return [[f(v[i][0])] for i in range(len(v))]
 
+def create_zero_matrix(row_count, col_count):
+    return [[0 for i in range(col_count)] for j in range(row_count)]
+
+# Creates a matrix, initialized with random values between lower and upper
+def create_rand_matrix(row_count, col_count, lower, upper):
+    return [[random.random()*(upper-lower)+lower for i in range(col_count)] for j in range(row_count)]
+
+# Creates a matrix, initialized with random integers between lower and upper
+def create_randint_matrix(row_count, col_count, lower, upper):
+    return [[random.randint(lower,upper) for i in range(col_count)] for j in range(row_count)]
+
+def flatten_list_of_matrix(A):
+    a = []
+    [[ [a.append(A[layer][row][col]) for col in range(len(A[layer][row]))] for row in range(len(A[layer])) ] for layer in range(len(A))]
+    return a
 
 # test dot prod
 #v = [[1], [-1], [2]]
